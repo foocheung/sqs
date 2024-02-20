@@ -8,7 +8,7 @@
 #'
 #' @importFrom shiny NS tagList
 #'
-addResourcePath("d", "inst/app/www/")
+addResourcePath("d", "extdata/")
 mod_dataInput_ui <- function(id){
   ns <- NS(id)
 
@@ -54,8 +54,10 @@ mod_dataInput_server <- function(id){
 
       if (input$dataInput_soma == 1) {
         withProgress(message = 'Uploading and Parsing Data...', {
-            SomaDataIO::read_adat("extdata/CHI-23-009_v4.1_Serum.hybNorm.medNormInt.plateScale.calibrate.anmlQC.qcCheck.anmlSMP.adat")
-        })
+          #  SomaDataIO::read_adat("d/CHI-23-009_v4.1_Serum.hybNorm.medNormInt.plateScale.calibrate.anmlQC.qcCheck.anmlSMP.adat")
+          foodata::load_data3()
+          ff<<-foodata::load_data3()
+          })
            }
 
       else{
@@ -73,8 +75,9 @@ mod_dataInput_server <- function(id){
 
       if (input$dataInput_soma == 1) {
         withProgress(message = 'Uploading and Parsing Data...', {
-          SomaDataIO::parseHeader("extdata/CHI-23-009_v4.1_Serum.hybNorm.medNormInt.plateScale.calibrate.anmlQC.qcCheck.anmlSMP.adat")
-        })
+        #  SomaDataIO::parseHeader("d/CHI-23-009_v4.1_Serum.hybNorm.medNormInt.plateScale.calibrate.anmlQC.qcCheck.anmlSMP.adat")
+       foodata::load_data3B()
+            })
       }
 
       else{
