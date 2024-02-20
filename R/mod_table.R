@@ -624,8 +624,7 @@ mod_table_server <- function(input, output, session, file){  #,batches,sim){
     output$tbl_cal_cv <- DT::renderDataTable({
       withProgress(message = 'Calculating calibrator CVs...', {
 
-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
-
+         df_cvs_all <- foodata::load_data4()
 
          df_cvs <-  file$df() %>% dplyr::filter(SampleType == "Calibrator") %>%
           dplyr::select(PlateId, starts_with("seq.")) %>%
@@ -734,7 +733,7 @@ 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
       withProgress(message = 'Calculating tbl_ks_qc...', {
 
       #  df_cvs_all <- arrow::read_feather("d/serum-cvs.feather")
- df_cvs_all <- foodata::load_data4()
+        df_cvs_all <- foodata::load_data4()
         df_cvs <- file$df()  %>% dplyr::filter(SampleType == "QC") %>%
           dplyr::select(PlateId, starts_with("seq.")) %>%
           dplyr::group_by(PlateId) %>%
