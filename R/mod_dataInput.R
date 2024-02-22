@@ -8,7 +8,7 @@
 #'
 #' @importFrom shiny NS tagList
 #'
-addResourcePath("d", "extdata/")
+#addResourcePath("d", "extdata/")
 mod_dataInput_ui <- function(id){
   ns <- NS(id)
 

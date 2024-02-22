@@ -10,7 +10,7 @@
 
 `%>%` <- dplyr::`%>%`
 
-addResourcePath("d", "extdata/")
+#addResourcePath("d", "extdata/")
 
 mod_table_ui <- function(id, name){
   ns <- NS(id)
@@ -19,7 +19,7 @@ mod_table_ui <- function(id, name){
 tabsetPanel(
   tabPanel("Introduction",
          h4(strong("Introduction")),
-
+         HTML('<iframe width="560" height="315" src="https://github.com/foocheung/sqs/assets/25374694/7196212d-0d18-4624-ba92-1c37319969b0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'),
 
  HTML(" <h1>SomaLogic Data QC Analysis</h1> <h2>User Interface Function:</h2>
   <ul>
@@ -316,7 +316,7 @@ mod_table_server <- function(input, output, session, file){  #,batches,sim){
      pass_flag <- as.data.frame.matrix(table(rowcheck_dat$RowCheck, rowcheck_dat$SampleType))
      pp<<-pass_flag
 
-
+#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
     })
   })
 
