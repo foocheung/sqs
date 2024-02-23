@@ -17,11 +17,12 @@ mod_table_ui <- function(id, name){
 ##tbl_flag_pass_samples
 
 tabsetPanel(
-  tabPanel("Introduction",
+  tabPanel(
          h4(strong("Introduction")),
-         HTML('<iframe width="560" height="315" src="https://github.com/foocheung/sqs/assets/25374694/7196212d-0d18-4624-ba92-1c37319969b0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'),
 
- HTML(" <h1>SomaLogic Data QC Analysis</h1> <h2>User Interface Function:</h2>
+         HTML('<CENTER><h1>SomaLogic Data QC Analysis</h1><BR><iframe width="560" height="315" src="https://github.com/foocheung/sqs/assets/25374694/7196212d-0d18-4624-ba92-1c37319969b0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></CENTER>'),
+
+ HTML("  <h2>User Interface Function:</h2>
   <ul>
     <li><strong>Tabbed Interface:</strong> Defines a Shiny module for creating a tabbed interface.</li>
     <li><strong>Tab Content:</strong>
