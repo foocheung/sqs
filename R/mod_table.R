@@ -72,7 +72,8 @@ tabPanel("Experimental Design", DT::dataTableOutput(ns("tbl_sample_summary")),
   <p>This summary provides an overview of the different types of samples analyzed in the study, offering insights into the composition and scope of the assay.</p>
 </body>
 ")),
- tabPanel("Sample Type PCA Plots",  plotly::plotlyOutput(ns("pca_sample_type")),
+ tabPanel("Sample Type PCA Plots",  selectInput(inputId=ns("pca_color"), label="Color", c("SampleType","PlateId"), "SampleType"),
+          plotly::plotlyOutput(ns("pca_sample_type")),
 HTML("<h1>Sample Type PCA Plots</h1>
 
   <p>These PCA plots display the results of Principal Component Analysis conducted on a filtered set of SOMAmers (7,289) recommended by SomaLogic for analysis. The plots contrast between different groups of interest and exclusively focus on the study samples, excluding all non-study samples.</p>
@@ -280,8 +281,9 @@ mod_table_server <- function(input, output, session, file){  #,batches,sim){
         dplyr::mutate(HoverText = paste0("PlateId: ", PlateId, "<br>SampleId: ", SampleId))
       variance_explained_pc1 <- round(pca_res$sdev[1]^2 / sum(pca_res$sdev^2) * 100, 2)
       variance_explained_pc2 <- round(pca_res$sdev[2]^2 / sum(pca_res$sdev^2) * 100, 2)
-      plot_pca <- ggplot2::ggplot(plot_dat, ggplot2::aes(x = PC1, y = PC2, color = SampleType, text = HoverText)) +
-        ggplot2::geom_point() +
+    #  plot_pca <- ggplot2::ggplot(plot_dat, ggplot2::aes(x = PC1, y = PC2, color = SampleType, text = HoverText)) +
+      plot_pca <- ggplot2::ggplot(plot_dat, ggplot2::aes(x = PC1, y = PC2, color = get(input$pca_color), text = HoverText)) +
+      ggplot2::geom_point() +
         ggplot2::labs(x = paste0("PC1 (", variance_explained_pc1, "%)"),
              y = paste0("PC2 (", variance_explained_pc2, "%)"),
              color = "Sample Type")
